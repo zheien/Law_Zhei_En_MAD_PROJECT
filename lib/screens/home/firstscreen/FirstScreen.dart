@@ -353,22 +353,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                                                                 width: 400,
                                                                                 child: Column(
                                                                                   children: <Widget>[
-                                                                                    Text(
-                                                                                      "Destination:" + snapshot.data[index].DestinationCode,
-                                                                                      style: GoogleFonts.alef(fontSize: 20, color: Colors.black),
+                                                                                    Row(
+                                                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                      children: <Widget>[
+                                                                                        Text(
+                                                                                          "Destination Code : " + snapshot.data[index].DestinationCode,
+                                                                                          style: GoogleFonts.alef(fontSize: 20, color: Colors.black),
+                                                                                        ),
+                                                                                        InkResponse(
+                                                                                          onTap: () {
+                                                                                            Navigator.of(context).pop();
+                                                                                          },
+                                                                                          child: CircleAvatar(
+                                                                                            child: Icon(Icons.close),
+                                                                                            backgroundColor: Colors.red,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
-                                                                                    Text(
-                                                                                      snapshot.data[index].Description,
-                                                                                      style: GoogleFonts.alef(fontSize: 20, color: Colors.black),
-                                                                                    ),
-                                                                                    InkResponse(
-                                                                                      onTap: () {
-                                                                                        Navigator.of(context).pop();
-                                                                                      },
-                                                                                      child: CircleAvatar(
-                                                                                        child: Icon(Icons.close),
-                                                                                        backgroundColor: Colors.red,
-                                                                                      ),
+                                                                                    Row(
+                                                                                      children: <Widget>[
+                                                                                        Text(
+                                                                                          snapshot.data[index].Description,
+                                                                                          style: GoogleFonts.alef(fontSize: 20, color: Colors.black),
+                                                                                        ),
+                                                                                      ],
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -488,37 +497,65 @@ class _SecondPageState extends State<SecondPage> {
               child: Scaffold(
                 appBar: new AppBar(
                   title: new Text("Second Page"),
+                  backgroundColor: Colors.tealAccent[400],
                 ),
-                body: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.check_circle_rounded,
-                        color: Colors.green.shade400,
-                        size: 60.0,
-                      ),
-                      Text(
-                        'Your payment has been confirmed for bus ' +
-                            widget.value,
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                      RaisedButton(
-                        onPressed: () async {
-                          insertDataMethod();
-                          if (_formKey.currentState.validate()) {
-                            await DatabaseService(uid: user.uid).updateUserData(
-                                _currentOccupations ??
-                                    snapshot.data.occupations,
-                                _currentName ?? snapshot.data.name,
-                                _currentAmount ?? snapshot.data.amount - 1);
-                            Navigator.pop(context);
-                          }
-                        },
-                        child: Text('Back'),
-                      ),
-                    ],
+                body: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.greenAccent, Colors.tealAccent[400]]),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.check_circle_rounded,
+                          color: Colors.white,
+                          size: 60.0,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            SizedBox(width: 20),
+                            Text(
+                              'Your payment has been confirmed for bus ',
+                              style: TextStyle(
+                                  fontSize: 17, fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              widget.value,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.w800),
+                            ),
+                          ],
+                        ),
+                        RaisedButton(
+                          color: Colors.orangeAccent[400],
+                          onPressed: () async {
+                            insertDataMethod();
+                            if (_formKey.currentState.validate()) {
+                              await DatabaseService(uid: user.uid)
+                                  .updateUserData(
+                                      _currentOccupations ??
+                                          snapshot.data.occupations,
+                                      _currentName ?? snapshot.data.name,
+                                      _currentAmount ??
+                                          snapshot.data.amount - 1);
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Text(
+                            'Back',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
