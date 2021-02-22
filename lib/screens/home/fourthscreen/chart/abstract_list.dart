@@ -148,7 +148,7 @@ class HeadingItem implements ListItem {
         data: assessmentData,
         domainFn: (Assessment assessment, _) => assessment.date,
         measureFn: (Assessment assessment, _) => assessment.price,
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
       )
     ];
   }

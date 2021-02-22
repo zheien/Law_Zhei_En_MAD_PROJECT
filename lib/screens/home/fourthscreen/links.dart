@@ -3,8 +3,6 @@ import 'package:project11/screens/home/fourthscreen/busBooking.dart';
 import 'package:project11/screens/home/fourthscreen/chart/ThirdScreen.dart';
 import 'package:project11/screens/home/fourthscreen/contactus.dart';
 import 'package:project11/screens/home/secondscreen/topup.dart';
-import 'package:project11/screens/home/fourthscreen/profile.dart';
-import 'package:project11/screens/home/fourthscreen/setting.dart';
 import 'AboutPage.dart';
 import 'settings_form.dart';
 
