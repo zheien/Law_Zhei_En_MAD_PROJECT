@@ -57,49 +57,86 @@ class _EntryState extends State<Entry> {
                 } else {
                   List snap = snapshot.data;
 
-                  return ListView.builder(
-                    itemCount: snap.length,
-                    itemBuilder: (context, index) {
-                      DateTime tempDate = new DateFormat("yyyy-MM-dd hh:mm:ss")
-                          .parse("${snap[index]['dateTime']}");
-                      String date = DateFormat("yyyy-MM-dd hh:mm:ss")
-                          .format(tempDate)
-                          .toString();
-                      // // print(date);
-                      // DateTime dateTime2 =
-                      //     DateTime.parse("${snap[index]['dateTime']}");
-                      print("${snap[index]}");
-                      String bus = "${snap[index]['bus']}".toString();
+                  return Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.greenAccent, Colors.tealAccent[400]]),
+                    ),
+                    child:
+                        // Container(
+                        //   child: Row(
+                        //     children: [
+                        ListView.builder(
+                      itemCount: snap.length,
+                      itemBuilder: (context, index) {
+                        DateTime tempDate =
+                            new DateFormat("yyyy-MM-dd hh:mm:ss")
+                                .parse("${snap[index]['dateTime']}");
+                        String date = DateFormat("yyyy-MM-dd hh:mm:ss")
+                            .format(tempDate)
+                            .toString();
+                        // // print(date);
+                        // DateTime dateTime2 =
+                        //     DateTime.parse("${snap[index]['dateTime']}");
+                        print("${snap[index]}");
+                        String bus = "${snap[index]['bus']}".toString();
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   children: [
-                            // Container(color: Colors.amber, width: 10),
-                            Container(
-                          //   // width: 10,
-                          decoration: new BoxDecoration(
-                            borderRadius: new BorderRadius.circular(16.0),
-                            color: Colors.purple[50],
-                          ),
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child:
-                              //Row(
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
                               //   children: [
-                              // SizedBox(width: 10),
-                              ListTile(
-                            title: Text("Bus : $bus"),
-                            subtitle: Text("Booked on : $date"),
+                              // Container(color: Colors.amber, width: 10),
+                              Container(
+                            //   // width: 10,
+                            decoration: new BoxDecoration(
+                              borderRadius: new BorderRadius.circular(16.0),
+                              color: Colors.white,
+                            ),
+                            child:
+                                //Row(
+                                //   children: [
+                                // SizedBox(width: 10),
+                                ListTile(
+                              title: Text(
+                                "Bus : $bus",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500),
+                              ),
+                              subtitle: Text(
+                                "Booked on : $date",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            //   ],
+                            // ),
+                            //   ),
+                            // ],
                           ),
-                          //   ],
                           // ),
-                          //   ),
-                          // ],
-                        ),
-                        // ),
-                      );
-                    },
+                        );
+                      },
+                    ),
+                    // RaisedButton(
+                    //   color: Colors.orangeAccent[400],
+                    //   onPressed: () async {
+                    //     Navigator.pop(context);
+                    //   },
+                    //   child: Text(
+                    //     'Back',
+                    //     style: TextStyle(
+                    //         fontSize: 18,
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.w800),
+                    //   ),
+                    // ),
+                    //     ],
+                    //   ),
+                    // ),
                   );
                 }
               },
