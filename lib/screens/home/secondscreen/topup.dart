@@ -82,10 +82,13 @@ class _TopUpScreenState extends State<TopUpScreen> {
                             // ),
                             SizedBox(height: 10.0),
                             RaisedButton(
-                                color: Colors.purple[100],
+                                color: Colors.orangeAccent,
                                 child: Text(
                                   'Top Up',
-                                  style: TextStyle(color: Colors.black),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16),
                                 ),
                                 onPressed: () async {
                                   if (_formKey.currentState.validate()) {

@@ -209,106 +209,137 @@ class PageTwo extends StatelessWidget {
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.greenAccent, Colors.greenAccent[400]]),
+            colors: [Colors.greenAccent, Colors.tealAccent[400]]),
       ),
       child: new Scaffold(
         appBar: new AppBar(
           title: new Text("Bus Arrival Timing"),
+          backgroundColor: Colors.tealAccent[400],
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FutureBuilder(
-                future: _getJokes(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.data == null) {
-                    return Container(
-                      child: Center(
-                        child: Text("Loading..."),
-                      ),
-                    );
-                  } else {
-                    List snap = snapshot.data;
-                    return Container(
-                      child: SizedBox(
-                        height: 450,
-                        child: ListView.builder(
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            String showDate = Date(
-                                snapshot.data[index].NextBus ??
-                                    'No Bus to Show');
-                            String showDate2 = Date(
-                                snapshot.data[index].NextBus2 ??
-                                    'No Bus to Show');
-                            String showDate3 = Date(
-                                snapshot.data[index].NextBus3 ??
-                                    'No Bus to Show');
-                            for (int i = 0; i < snapshot.data.length; i++) {
-                              service = snapshot.data[index].ServiceNo;
-                              print(index);
-                              print(service);
-                              print(snapshot.data);
-                              print('-----------------------');
-                              //index = index + 1;
-                              return Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Container(
-                                  decoration: new BoxDecoration(
-                                    borderRadius:
-                                        new BorderRadius.circular(16.0),
-                                    color: Colors.purple[50],
-                                  ),
-                                  child: ListTile(
-                                    leading: Icon(Icons.timer_rounded,
-                                        color: Colors.blue.shade400),
-                                    title: Text(
-                                      snapshot.data[index].ServiceNo ??
-                                          'default value',
-                                      style: GoogleFonts.alef(),
-                                    ),
-                                    subtitle: Wrap(
-                                      alignment: WrapAlignment.spaceBetween,
-                                      direction: Axis.vertical,
-                                      children: <Widget>[
-                                        new Text(
-                                          "Next Bus : $showDate" ??
-                                              'No Bus to Show',
-                                        ),
-                                        new Text(
-                                          "Next Bus : $showDate2" ??
-                                              'No Bus to Show',
-                                        ),
-                                        new Text(
-                                          "Next Bus : $showDate3" ??
-                                              'No Bus to Show',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                          },
+        body: Container(
+          height: 610,
+          width: 410,
+          decoration: BoxDecoration(
+            // color: Colors.purple[50],
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.greenAccent, Colors.tealAccent[400]]),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FutureBuilder(
+                  future: _getJokes(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.data == null) {
+                      return Container(
+                        child: Center(
+                          child: Text("Loading..."),
                         ),
-                      ),
-                      //),
-                      // ),
-                      //],
-                      //),
-                    );
-                  }
-                },
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Back'),
-                color: Colors.orangeAccent,
-              ),
-            ],
+                      );
+                    } else {
+                      List snap = snapshot.data;
+                      return Container(
+                        // color: Colors.blue,
+                        child: SizedBox(
+                          height: 450,
+                          child: ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              String showDate = Date(
+                                  snapshot.data[index].NextBus ??
+                                      'No Bus to Show');
+                              String showDate2 = Date(
+                                  snapshot.data[index].NextBus2 ??
+                                      'No Bus to Show');
+                              String showDate3 = Date(
+                                  snapshot.data[index].NextBus3 ??
+                                      'No Bus to Show');
+                              for (int i = 0; i < snapshot.data.length; i++) {
+                                service = snapshot.data[index].ServiceNo;
+                                print(index);
+                                print(service);
+                                print(snapshot.data);
+                                print('-----------------------');
+                                //index = index + 1;
+                                return Container(
+                                  height: 130,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: new BoxDecoration(
+                                        borderRadius:
+                                            new BorderRadius.circular(16.0),
+                                        color: Colors.white,
+                                      ),
+                                      child: ListTile(
+                                        leading: Icon(Icons.timer_rounded,
+                                            color: Colors.blue.shade400,
+                                            size: 30.0),
+                                        title: Text(
+                                          snapshot.data[index].ServiceNo ??
+                                              'default value',
+                                          style: GoogleFonts.alef(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 25),
+                                        ),
+                                        subtitle: Wrap(
+                                          alignment: WrapAlignment.spaceBetween,
+                                          direction: Axis.vertical,
+                                          children: <Widget>[
+                                            new Text(
+                                              "Next Bus : $showDate" ??
+                                                  'No Bus to Show',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 17),
+                                            ),
+                                            new Text(
+                                              "Next Bus : $showDate2" ??
+                                                  'No Bus to Show',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 17),
+                                            ),
+                                            new Text(
+                                              "Next Bus : $showDate3" ??
+                                                  'No Bus to Show',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 17),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        //),
+                        // ),
+                        //],
+                        //),
+                      );
+                    }
+                  },
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Back'),
+                  color: Colors.orangeAccent,
+                ),
+              ],
+            ),
           ),
         ),
       ),
