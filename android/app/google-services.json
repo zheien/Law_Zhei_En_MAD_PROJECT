@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "153078802678",
-    "firebase_url": "https://project11-f2dfe-default-rtdb.firebaseio.com",
-    "project_id": "project11-f2dfe",
-    "storage_bucket": "project11-f2dfe.appspot.com"
+    "project_number": "600980546253",
+    "project_id": "mad-project-final",
+    "storage_bucket": "mad-project-final.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:153078802678:android:1428dec70cc9ffc35f24d7",
+        "mobilesdk_app_id": "1:600980546253:android:a28a60e8e3b05e15067f84",
         "android_client_info": {
           "package_name": "com.example.project11"
         }
       },
       "oauth_client": [
         {
-          "client_id": "153078802678-7a1304a0age00smmpo5ljsen6p6pugrt.apps.googleusercontent.com",
+          "client_id": "600980546253-g1j1soig3649hh58ttt8l6ae0i0m3rf7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCJeMKEkXQ19khkyZ-pFCf1qVs2IwSjER8"
+          "current_key": "AIzaSyC9Sgnuq4i5PSv3gKUKTgJnx64UHDgOphE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "153078802678-7a1304a0age00smmpo5ljsen6p6pugrt.apps.googleusercontent.com",
+              "client_id": "600980546253-g1j1soig3649hh58ttt8l6ae0i0m3rf7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

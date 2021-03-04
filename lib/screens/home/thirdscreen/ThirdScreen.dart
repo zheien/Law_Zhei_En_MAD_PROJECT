@@ -244,19 +244,22 @@ class PageTwo extends StatelessWidget {
                       return Container(
                         // color: Colors.blue,
                         child: SizedBox(
-                          height: 450,
+                          height: 410,
                           child: ListView.builder(
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
                               String showDate = Date(
-                                  snapshot.data[index].NextBus ??
-                                      'No Bus to Show');
+                                      snapshot.data[index].NextBus ??
+                                          'No Next Bus Available Yet') ??
+                                  'No Next Bus Available Yet';
                               String showDate2 = Date(
-                                  snapshot.data[index].NextBus2 ??
-                                      'No Bus to Show');
+                                      snapshot.data[index].NextBus2 ??
+                                          'No Next Bus Available Yet') ??
+                                  'No Next Bus Available Yet';
                               String showDate3 = Date(
-                                  snapshot.data[index].NextBus3 ??
-                                      'No Bus to Show');
+                                      snapshot.data[index].NextBus3 ??
+                                          'No Next Bus Available Yet') ??
+                                  'No Next Bus Available Yet';
                               for (int i = 0; i < snapshot.data.length; i++) {
                                 service = snapshot.data[index].ServiceNo;
                                 print(index);
@@ -379,14 +382,17 @@ class PageTwo extends StatelessWidget {
 }
 
 Date(String inputDate) {
-  DateTime tempDate =
-      new DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(inputDate) ??
-          'No Bus to Show';
-  String date = DateFormat("yyyy-MM-dd'T'HH:mm:ss").format(tempDate).toString();
-  var parts = date.split('T');
-  var prefix = parts[0].trim(); // prefix: "date"
-  var date2 = parts.sublist(1).join(':').trim();
-  return date2;
+  if (inputDate != "") {
+    DateTime tempDate =
+        new DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(inputDate) ??
+            'No Bus to Show';
+    String date =
+        DateFormat("yyyy-MM-dd'T'HH:mm:ss").format(tempDate).toString();
+    var parts = date.split('T');
+    var prefix = parts[0].trim(); // prefix: "date"
+    var date2 = parts.sublist(1).join(':').trim();
+    return date2;
+  }
 }
 
 class Joke {

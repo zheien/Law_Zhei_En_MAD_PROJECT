@@ -522,7 +522,9 @@ class _SecondPageState extends State<SecondPage> {
                             Text(
                               'Your payment has been confirmed for bus ',
                               style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w600),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
                             ),
                             Text(
                               widget.value,
